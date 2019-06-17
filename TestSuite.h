@@ -11,6 +11,9 @@
 #include<list>
 #include<map>
 #include<iostream>
+#include<string>
+
+
 
 class TestCaseBase;
 

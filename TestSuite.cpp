@@ -1,6 +1,8 @@
 #include "TestSuite.h"
 #include "Test1.h"
 #include "Test2.h"
+#include "Test3.h"
+#include "Test4.h"
 
 // Get Singleton class instance
 //=========================== TestSuite *getInstance() ==================
@@ -72,13 +74,13 @@ void TestSuite::run() {
 		// initialize the test case
 		attr.result = entry.second->init();
 		// if the test case is initialized properly
-		if (attr.result == TestSuite::ret::Success)
+		attr.status = (TestSuite::ret::unknown == attr.result) ? state::not_executed : state::executed;
+		if (attr.result == TestSuite::ret::Success )
 		{
 			// execute the test case
 			attr.result = entry.second->exec();
 		}
-		// test case status is executed
-		attr.status = state::executed;
+		
 		// store the test case result to map result
 		result.emplace(entry.first, attr);
 	}
@@ -97,7 +99,19 @@ void TestSuite::printSummary() {
 	for (const auto & entry : result)
 	{
 		std::string executed = (TestSuite::state::executed == entry.second.status) ? "executed" : "not_executed";
-		std::string result = (TestSuite::ret::Success == entry.second.result) ? "Sucess" : "Failure";
+		//std::string result = (TestSuite::ret::Success == entry.second.result) ? "Sucess" : "Failure";
+		std::string result;
+		if (TestSuite::ret::unknown == entry.second.result){
+			result = "Unknown";
+		}
+		if (TestSuite::ret::Success == entry.second.result){
+			result = "Success";
+		}
+		if (TestSuite::ret::Failure == entry.second.result){
+			result = "Failure";
+		}
+			
+		//	std::string result = entry.second.result;
 		std::cout << "Test case id " << entry.second.tc_id << ", name " << entry.second.tc_name <<
 			", description " << entry.second.tc_desc << ", status " << executed << ", result " << result << std::endl;
 	}
