@@ -3,6 +3,8 @@
 TestSuite* TestSuite::instance = nullptr;
 using namespace std;
 int main() {
+	cout << "HelloW"<<endl;
+	
 	TestSuite *su = TestSuite::getInstance();
 	su->addTestCase({"Test1", "Test2", "Test3","Test4"});
 	su->run();
