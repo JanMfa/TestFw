@@ -38,7 +38,7 @@ public:
 	//PARAM: 
 	//POST: Returns enum value depending on result of run test case
 	//==========================================================================================
-	virtual enum TestSuite::ret init();
+	virtual enum TestSuite::ret init() = 0;
 
 	// Execution function for each test cases 
 	//========================= enum TestSuite::ret exec() =====================================
@@ -47,7 +47,7 @@ public:
 	//PARAM: 
 	//POST: Returns enum value depending on result of run test case
 	//==========================================================================================
-	virtual enum TestSuite::ret exec();
+	virtual enum TestSuite::ret exec() = 0;
 
 	// Public function to get test case ID
 	//================================= getID() ===============================
