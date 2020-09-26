@@ -9,7 +9,7 @@ Sample output is attached under auto.exe
 
 ## What is TestSuite?
 
-TestSuite is a scalable test automation framework built in console app using c++.
+TestSuite is a scalable test automation framework built in console app using C++.
 At the end of the test execution, the user will be able to generate the
 summary of test result. Status and the execution result are printed and
 shown as a console.
